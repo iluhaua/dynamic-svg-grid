@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+    .bg-viewport {
+      perspective: 600px;
+      height: 100%;
+      overflow: hidden;
+      background-color: #243749;
+    }
+
+    .bg-plane {
+      transform: rotate3d(1,0,0,40deg) translateX(-4000px) translateY(-323px) scale(8);
+      transform-origin: center bottom;
+      overflow: hidden;
+      width: 8001px;
+      height: 8001px;
+    }
+
+    /*#gridCircle {
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-name: movePoint;
+    }*/
+
+    @keyframes movePoint {
+      from {
+        transform: translateY(0px);
+      }
+
+      to {
+        transform: translateY(80px);
+      }
+    }
+  </style>
+  <div class="bg-viewport">
+    <div class="bg-plane">
+    <svg width="8001px" height="8001px" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#344D65" stroke-width="1"/>
+        </pattern>
+        <pattern id="grid" width="160" height="80" patternUnits="userSpaceOnUse">
+          <rect width="160" height="80" fill="url(#smallGrid)"/>
+          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#3B5872" stroke-width="1.5"/>
+          <path d="M 160 0 L 80 0 80 80" fill="none" stroke="#3B5872" stroke-width="1.5"/>
+          <circle id="gridCircle" x="80" y="0" z="0" r="2" fill="none" stroke="#7792A3" stroke-width="1.5">         
+              <animateTransform 
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                from="80 0"
+                to="80 80"
+                dur="2s"
+                repeatCount="indefinite"
+              />
+          </circle>
+          <circle id="gridCircle" cx="160" cy="40" r="2" fill="none" stroke="#7792A3" stroke-width="1.5"/>
+          <circle id="gridCircle" cx="0" cy="40" r="2" fill="none" stroke="#7792A3" stroke-width="1.5"/>
+        </pattern>
+      </defs>
+    
+      <rect width="8001px" height="8001px" fill="url(#grid)" />
+    </svg>
+    </div>
+  </div>
+</body>
+</html>
